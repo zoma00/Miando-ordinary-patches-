@@ -1,0 +1,88 @@
+version: '3.8'
+services:
+  miando-db:
+    build: .
+    container_name: miando-db
+    environment:
+      POSTGRES_DB: miando
+      POSTGRES_USER: miando
+      POSTGRES_PASSWORD: changeme
+    ports:
+      - "5434:5432"
+    volumes:
+      - miando_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./server.crt:/var/lib/postgresql/certs/server.crt
+      - ./server.key:/var/lib/postgresql/certs/server.key
+
+  indikator-bot:
+    build:
+      context: ./indikator_bot
+      dockerfile: Dockerfile
+    container_name: indikator-bot
+    depends_on:
+      - miando-db
+    volumes:
+      - ./indikator_bot/server.crt:/app/server.crt
+    environment:
+      DB_HOST: miando-db
+      DB_PORT: 5432
+      DB_NAME: miando
+      DB_USER: miando
+      DB_PASSWORD: changeme
+
+  json-exporter:
+    build:
+      context: ./json_exporter
+      dockerfile: Dockerfile
+    container_name: json-exporter
+    depends_on:
+      - miando-db
+    volumes:
+      - /opt/miando/data:/opt/miando/data
+      - /opt/miando/logs:/opt/miando/logs
+    environment:
+      DB_HOST: miando-db
+      DB_PORT: 5432
+      DB_NAME: miando
+      DB_USER: miando
+      DB_PASSWORD: changeme
+
+  patterns:
+    build:
+      context: ./patterns
+      dockerfile: Dockerfile
+    container_name: patterns-container
+    depends_on:
+      - miando-db
+    volumes:
+      - ./patterns:/app/patterns
+      - ./tests:/app/tests
+      - ./patterns/miando/logs:/app/miando/logs
+      - ./server.crt:/app/server.crt:ro
+      - ./server.key:/app/server.key:ro
+    environment:
+      DB_HOST: miando-db
+      DB_PORT: 5432
+      DB_NAME: miando
+      DB_USER: miando
+      DB_PASSWORD: changeme
+      SYMBOL: EURUSD
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: miando-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@miando.com
+      PGADMIN_DEFAULT_PASSWORD: changeme
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "8080:80"
+    depends_on:
+      - miando-db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  miando_data:
+  pgadmin_data:

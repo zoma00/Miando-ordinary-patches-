@@ -1,0 +1,28 @@
+# Testing dependencies
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-mock>=3.11.0
+pytest-cov>=4.1.0
+pytest-xdist>=3.3.0
+pytest-timeout>=2.1.0
+pytest-env>=0.8.0
+
+# Code quality
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Database testing dependencies
+# pytest-postgresql>=5.0.0  # Commented out due to psycopg issues
+psycopg2-binary>=2.9.0
+# psycopg[binary,pool]>=3.1.0  # Commented out due to libpq issues
+
+# Fixtures and test data
+factory-boy>=3.3.0
+faker>=19.0.0
+
+# Docker testing
+testcontainers>=3.7.0
+
+# Performance testing
+pytest-benchmark>=4.0.0
