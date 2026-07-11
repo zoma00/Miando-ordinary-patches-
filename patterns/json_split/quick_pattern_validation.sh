@@ -3,8 +3,8 @@
 echo "🔍 Pattern JSON Quick Validation"
 echo "=================================="
 
-# Use your database password
-export PGPASSWORD="changeme"
+# Read the database password from the environment (see .env.example)
+export PGPASSWORD="${PGPASSWORD:?Set PGPASSWORD before running (see .env.example)}"
 
 echo "1. Checking Pattern JSON data structure..."
 psql -h localhost -p 5434 -U miando -d miando -c "

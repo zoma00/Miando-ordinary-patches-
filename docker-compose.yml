@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: miando
       POSTGRES_USER: miando
-      POSTGRES_PASSWORD: changeme
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5434:5432"
     volumes:
@@ -29,7 +29,7 @@ services:
       DB_PORT: 5432
       DB_NAME: miando
       DB_USER: miando
-      DB_PASSWORD: changeme
+      DB_PASSWORD: ${DB_PASSWORD}
 
   json-exporter:
     build:
@@ -46,7 +46,7 @@ services:
       DB_PORT: 5432
       DB_NAME: miando
       DB_USER: miando
-      DB_PASSWORD: changeme
+      DB_PASSWORD: ${DB_PASSWORD}
 
   patterns:
     build:
@@ -66,7 +66,7 @@ services:
       DB_PORT: 5432
       DB_NAME: miando
       DB_USER: miando
-      DB_PASSWORD: changeme
+      DB_PASSWORD: ${DB_PASSWORD}
       SYMBOL: EURUSD
 
   pgadmin:
@@ -74,7 +74,7 @@ services:
     container_name: miando-pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@miando.com
-      PGADMIN_DEFAULT_PASSWORD: changeme
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     ports:
       - "8080:80"

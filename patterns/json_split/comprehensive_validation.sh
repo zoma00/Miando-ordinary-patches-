@@ -3,7 +3,7 @@
 echo "🔍 COMPREHENSIVE Pattern JSON Validation"
 echo "========================================="
 
-export PGPASSWORD="changeme"
+export PGPASSWORD="${PGPASSWORD:?Set PGPASSWORD before running (see .env.example)}"
 
 echo "1. 🎯 VOLATILITY vs ATR Analysis..."
 psql -h localhost -p 5434 -U miando -d miando -c "
