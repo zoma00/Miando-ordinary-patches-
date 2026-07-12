@@ -25,7 +25,7 @@ B_CONFIG = {
     "port": "5432",
     "database": "miando",     # ✅ Correct database name
     "user": "miando",
-    "password": "miando_pass",
+    "password": "changeme",
     # Optional für SSL:
     # "sslmode": "require",
     # "sslrootcert": "/etc/ssl/certs/server.crt",
