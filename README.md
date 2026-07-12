@@ -1,3 +1,14 @@
+```md
+![Python 3](https://img.shields.io/badge/Python_3-3776AB?logo=python&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![MetaTrader 5](https://img.shields.io/badge/MetaTrader_5-0055A4)
+![MQL5](https://img.shields.io/badge/MQL5-0055A4)
+![SSL/TLS](https://img.shields.io/badge/SSL/TLS-009639?logo=letsencrypt&logoColor=white)
+![pytest](https://img.shields.io/badge/pytest-0A9EDC?logo=pytest&logoColor=white)
+```
+
+
 # Miando — MT5 Forex Data Integration & Analytics
 
 Miando ingests live Forex market data from a **Windows MetaTrader 5 (MT5) server** into a
