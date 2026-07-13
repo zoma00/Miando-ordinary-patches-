@@ -95,9 +95,6 @@ class TestOHLCDataFetching:
         assert result[1]["close"] == 2012.0
         mock_cursor.execute.assert_called_once()
 
-    @pytest.mark.database
-    def test_export_ohlc_all_live_success(self, mock_db_connection, mock_file_operations):
-        
     @patch('ohlc_all_live.get_cursor')
     def test_fetch_ohlc_data_database_error(self, mock_get_cursor):
         """Test OHLC data fetching with database error."""

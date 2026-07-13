@@ -8,10 +8,9 @@ Works with existing database schema and Amir's data collection
 import sys
 import os
 import time
-import json
 import logging
 from datetime import datetime, timedelta, timezone
-from typing import Dict, Optional, List
+from typing import Dict
 import psycopg2
 import psycopg2.extras
 
@@ -155,15 +154,12 @@ class AmirDataBridge:
         
         hour = utc_time.hour
         
-        # Session mapping (UTC hours)
+        # Session mapping (UTC hours), aligned with Pattern JSON analytics.
         if 22 <= hour or hour < 7:
             return 'Sydney'
-        elif 8 <= hour < 17:
+        if 7 <= hour < 15:
             return 'London'
-        elif 13 <= hour < 22:
-            return 'New_York'
-        else:
-            return 'Transition'
+        return 'New_York'
     
     def calculate_volatility_score(self, record: Dict) -> float:
         """Calculate simple volatility score"""
@@ -179,15 +175,6 @@ class AmirDataBridge:
     
     def update_ohlc_with_enhancements(self, cursor, enhanced_data: Dict):
         """Update OHLC record with bridge enhancements"""
-        # Create metadata JSON for bridge data
-        bridge_metadata = {
-            'trading_session': enhanced_data.get('trading_session'),
-            'volatility_score': enhanced_data.get('volatility_score'),
-            'price_change_pct': enhanced_data.get('price_change_pct'),
-            'estimated_spread': enhanced_data.get('estimated_spread'),
-            'bridge_processed_at': enhanced_data['bridge_processed_at'].isoformat()
-        }
-        
         # Store bridge metadata in a comment or separate field
         # Since we're working with existing schema, we'll log this info
         logger.info(f"📊 Enhanced data for {enhanced_data['symbol']} at {enhanced_data['open_time']}: "
