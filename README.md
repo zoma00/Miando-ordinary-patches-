@@ -1,4 +1,4 @@
-
+[![CI](https://github.com/zoma00/miando-mt5-forex-integration/actions/workflows/ci.yml/badge.svg)](https://github.com/zoma00/miando-mt5-forex-integration/actions/workflows/ci.yml)
 ![Python 3](https://img.shields.io/badge/Python_3-3776AB?logo=python&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
@@ -111,11 +111,16 @@ cd patterns/json_split/
 python3 pattern_json_live.py --force-fresh   # bypasses caching for current-day data
 ```
 
-Run the tests:
+Run the same fast, offline checks used by CI:
 
 ```bash
-pytest
+python3 -m pip install -r requirements-ci.txt
+ruff check .
+python3 -m pytest -c pytest-ci.ini -v
 ```
+
+The CI suite validates the maintained integration and analytics core without requiring a running
+MT5 server, PostgreSQL instance, or Docker stack.
 
 ## Database schema (highlights)
 
