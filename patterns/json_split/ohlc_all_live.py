@@ -12,8 +12,7 @@ This script runs every minute and:
 """
 
 import time
-from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any
 
 from common import (
     get_cursor, insert_snapshot, get_latest_m1_time, 

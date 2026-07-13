@@ -18,13 +18,12 @@ from typing import Dict, List, Any, Optional, Tuple
 
 from common import (
     get_cursor, format_timestamp_utc, safe_float, safe_int,
-    log_info, log_error, log_success, SYMBOL
+    log_info, log_error, log_success
 )
 
 # Import from live version
 from pattern_json_live import (
-    PATTERN_TIMEFRAME_LIMITS, KEY_INDICATORS,
-    get_trading_session, assess_volatility
+    PATTERN_TIMEFRAME_LIMITS, get_trading_session, assess_volatility
 )
 
 

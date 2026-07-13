@@ -12,13 +12,12 @@ This script runs every minute and:
 4. Stores in trading_snapshots.pattern_json column
 """
 
-import time
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 import psycopg2.extras
 
 from common import (
-    get_cursor, insert_snapshot, get_latest_m1_time, get_pg_conn,
+    get_cursor, get_latest_m1_time, get_pg_conn,
     format_timestamp_utc, safe_float, safe_float_nullable, safe_int,
     log_info, log_error, log_success, SYMBOL
 )

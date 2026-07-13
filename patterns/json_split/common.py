@@ -360,7 +360,7 @@ def validate_pattern_json_quality(symbol: str = 'XAUUSD') -> None:
             indicators = pattern_json.get('indicators', {})
             atr_h1 = indicators.get('atr', {}).get('H1')
             
-            print(f"✅ VOLATILITY CHECK:")
+            print("✅ VOLATILITY CHECK:")
             print(f"   Current volatility: {volatility}")
             print(f"   ATR H1 value: {atr_h1}")
             
@@ -372,13 +372,13 @@ def validate_pattern_json_quality(symbol: str = 'XAUUSD') -> None:
                 else:
                     print(f"   ⚠️  Volatility assessment MISMATCH (ATR {atr_h1} vs {volatility})")
             else:
-                print(f"   ⚠️  ATR H1 value missing")
+                print("   ⚠️  ATR H1 value missing")
             
             # 2. Check session vs UTC hour rules
             session = pattern_json.get('session', 'unknown')
             snapshot_hour = snapshot_time.hour if hasattr(snapshot_time, 'hour') else None
             
-            print(f"\n✅ SESSION CHECK:")
+            print("\n✅ SESSION CHECK:")
             print(f"   Current session: {session}")
             print(f"   Snapshot UTC hour: {snapshot_hour}")
             
@@ -399,7 +399,7 @@ def validate_pattern_json_quality(symbol: str = 'XAUUSD') -> None:
                     print(f"   ⚠️  Session MISMATCH (Hour {snapshot_hour} should be {expected_session}, got {session})")
             
             # 3. Check JSON structure and keys
-            print(f"\n✅ JSON STRUCTURE CHECK:")
+            print("\n✅ JSON STRUCTURE CHECK:")
             required_keys = ['symbol', 'snapshot_time', 'context', 'indicators', 'session', 'volatility']
             missing_keys = [key for key in required_keys if key not in pattern_json]
             
@@ -423,7 +423,7 @@ def validate_pattern_json_quality(symbol: str = 'XAUUSD') -> None:
             
             non_snake_case = [key for key in all_keys if '_' in key.split('.')[-1] and not key.split('.')[-1].islower()]
             if not non_snake_case:
-                print(f"   ✅ All keys follow snake_case convention")
+                print("   ✅ All keys follow snake_case convention")
             else:
                 print(f"   ⚠️  Non-snake_case keys found: {non_snake_case[:5]}...")
             
@@ -432,31 +432,31 @@ def validate_pattern_json_quality(symbol: str = 'XAUUSD') -> None:
             max_gain = outcome_1h.get('max_gain_pct_1h')
             max_loss = outcome_1h.get('max_loss_pct_1h')
             
-            print(f"\n✅ PREDICTION DATA CHECK:")
+            print("\n✅ PREDICTION DATA CHECK:")
             print(f"   Max gain prediction: {max_gain}%")
             print(f"   Max loss prediction: {max_loss}%")
             
             if max_gain is not None and max_loss is not None:
-                print(f"   ✅ Outcome predictions available")
+                print("   ✅ Outcome predictions available")
             else:
-                print(f"   ⚠️  Outcome predictions missing")
+                print("   ⚠️  Outcome predictions missing")
             
             # 5. Check candle data optimization
             context = pattern_json.get('context', {})
             total_candles = sum(len(context.get(tf, [])) for tf in context.keys())
             
-            print(f"\n✅ DATA OPTIMIZATION CHECK:")
+            print("\n✅ DATA OPTIMIZATION CHECK:")
             print(f"   Total candles across all timeframes: {total_candles}")
             for tf, candles in context.items():
                 print(f"   {tf}: {len(candles)} candles")
             
             if total_candles <= 200:
-                print(f"   ✅ Data optimized (≤200 candles)")
+                print("   ✅ Data optimized (≤200 candles)")
             else:
                 print(f"   ⚠️  High candle count (>{total_candles})")
             
             # 6. Display formatted JSON sample
-            print(f"\n✅ FORMATTED PATTERN JSON SAMPLE:")
+            print("\n✅ FORMATTED PATTERN JSON SAMPLE:")
             print("=" * 60)
             print(row['pretty_json'][:1000] + "..." if len(row['pretty_json']) > 1000 else row['pretty_json'])
             

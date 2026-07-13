@@ -9,10 +9,8 @@ import sys
 import os
 import time
 import json
-import smtplib
-from email.mime.text import MimeText
-from datetime import datetime, timedelta, timezone
-from typing import Dict, List, Optional, Tuple
+from datetime import datetime
+from typing import Dict, List
 import psycopg2
 import psycopg2.extras
 import logging
