@@ -14,8 +14,8 @@
 ├── data_bridge.py            - Main bridge enhancing Amir's data
 ├── monitor.py                - Continuous monitoring system
 ├── dashboard.py              - Integration status dashboard
-├── amir_integration.sh       - Management script for all components
-├── AMIR_ENHANCEMENT_SPEC.md  - Enhancement specification for Amir
+├── integration.sh            - Management script for all components
+├── ENHANCEMENT_SPEC.md       - Enhancement specification for Amir
 └── test_amir_bridge_integration.py - Complete bridge test suite
 
 🗑️ CLEANED UP FILES (Removed):
@@ -78,7 +78,7 @@ PATTERN JSON SYSTEM (Force-Fresh with Real-time Data)
 - Test suite updated for bridge integration
 
 📋 NEXT STEPS FOR AMIR:
-- Review AMIR_ENHANCEMENT_SPEC.md for detailed requirements
+- Review ENHANCEMENT_SPEC.md for detailed requirements
 - Implement real-time spread data collection in MT5 script
 - Add data freshness timestamps (mt5_collection_time)
 - Update data source identification in database inserts

@@ -226,7 +226,7 @@ def get_amir_integration_status():
         print("   python3 monitor.py --check")
         print()
         print("4. Send enhancement spec to Amir:")
-        print("   cat AMIR_ENHANCEMENT_SPEC.md")
+        print("   cat ENHANCEMENT_SPEC.md")
         
         conn.close()
         

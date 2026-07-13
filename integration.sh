@@ -60,9 +60,9 @@ test_pattern_json() {
 view_enhancement_spec() {
     echo "📋 Enhancement Specification for Amir:"
     echo "======================================"
-    cat AMIR_ENHANCEMENT_SPEC.md | head -50
+    cat ENHANCEMENT_SPEC.md | head -50
     echo ""
-    echo "📄 Full specification available in: AMIR_ENHANCEMENT_SPEC.md"
+    echo "📄 Full specification available in: ENHANCEMENT_SPEC.md"
 }
 
 # Function to setup database
