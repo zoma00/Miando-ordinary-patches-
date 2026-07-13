@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 
 import pytest
 
-from amir_data_bridge import AmirDataBridge
+from data_bridge import AmirDataBridge
 from patterns.json_split.common import (
     format_timestamp_utc,
     safe_float,

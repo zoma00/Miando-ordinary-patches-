@@ -11,9 +11,9 @@
 ============================================================
 
 🌉 CORE BRIDGE COMPONENTS:
-├── amir_data_bridge.py       - Main bridge enhancing Amir's data
-├── amir_monitor.py           - Continuous monitoring system  
-├── amir_dashboard.py         - Integration status dashboard
+├── data_bridge.py            - Main bridge enhancing Amir's data
+├── monitor.py                - Continuous monitoring system
+├── dashboard.py              - Integration status dashboard
 ├── amir_integration.sh       - Management script for all components
 ├── AMIR_ENHANCEMENT_SPEC.md  - Enhancement specification for Amir
 └── test_amir_bridge_integration.py - Complete bridge test suite

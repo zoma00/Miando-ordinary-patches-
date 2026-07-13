@@ -1,8 +1,8 @@
 target-version = "py311"
 line-length = 100
 include = [
-    "amir_data_bridge.py",
-    "amir_monitor.py",
+    "data_bridge.py",
+    "monitor.py",
     "patterns/json_split/common.py",
     "patterns/json_split/ohlc_all_live.py",
     "patterns/json_split/pattern_json_live.py",

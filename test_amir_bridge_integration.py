@@ -259,9 +259,9 @@ def test_bridge_monitor():
     print("\n🔍 Testing Bridge Monitor...")
     try:
         # Check if bridge monitor script exists
-        monitor_path = os.path.join(os.path.dirname(__file__), 'amir_monitor.py')
-        bridge_path = os.path.join(os.path.dirname(__file__), 'amir_data_bridge.py')
-        dashboard_path = os.path.join(os.path.dirname(__file__), 'amir_dashboard.py')
+        monitor_path = os.path.join(os.path.dirname(__file__), 'monitor.py')
+        bridge_path = os.path.join(os.path.dirname(__file__), 'data_bridge.py')
+        dashboard_path = os.path.join(os.path.dirname(__file__), 'dashboard.py')
         
         scripts_found = []
         if os.path.exists(monitor_path):
@@ -370,9 +370,9 @@ def run_bridge_test_suite():
         print("✅ Amir's data is accessible")
         print("✅ Bridge components are ready")
         print("\n🚀 Next Steps:")
-        print("1. Run bridge setup: python3 amir_data_bridge.py")
-        print("2. Start monitoring: python3 amir_monitor.py")
-        print("3. Check dashboard: python3 amir_dashboard.py")
+        print("1. Run bridge setup: python3 data_bridge.py")
+        print("2. Start monitoring: python3 monitor.py")
+        print("3. Check dashboard: python3 dashboard.py")
         print("4. Share enhancement spec with Amir")
     else:
         print("⚠️  Bridge integration needs setup.")

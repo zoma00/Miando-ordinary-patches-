@@ -479,8 +479,8 @@ def main():
     else:
         print("🔍 Amir Data Freshness Monitor")
         print("Usage:")
-        print("  python3 amir_monitor.py --check     # Quick health check")
-        print("  python3 amir_monitor.py --monitor   # Continuous monitoring")
+        print("  python3 monitor.py --check     # Quick health check")
+        print("  python3 monitor.py --monitor   # Continuous monitoring")
 
 if __name__ == "__main__":
     main()

@@ -164,7 +164,7 @@ class TestRunner:
 
     def test_bridge_scripts_availability(self):
         """Test bridge scripts availability"""
-        scripts = ['amir_monitor.py', 'amir_data_bridge.py', 'amir_dashboard.py']
+        scripts = ['monitor.py', 'data_bridge.py', 'dashboard.py']
         found = []
         
         for script in scripts:
@@ -288,9 +288,9 @@ class TestRunner:
         print(f"\n{Colors.BLUE}📋 NEXT STEPS:{Colors.NC}")
         print("1. Review any failed tests above")
         print("2. If all passed, your bridge integration is ready")
-        print("3. Run 'python3 amir_data_bridge.py' to start bridge")
-        print("4. Run 'python3 amir_monitor.py' for monitoring")
-        print("5. Run 'python3 amir_dashboard.py' for status dashboard")
+        print("3. Run 'python3 data_bridge.py' to start bridge")
+        print("4. Run 'python3 monitor.py' for monitoring")
+        print("5. Run 'python3 dashboard.py' for status dashboard")
 
 def main():
     runner = TestRunner()
@@ -308,9 +308,9 @@ def main():
     essential_files = [
         'test_amir_bridge_integration.py',
         'test_json_split_pattern.py', 
-        'amir_data_bridge.py',
-        'amir_monitor.py',
-        'amir_dashboard.py'
+        'data_bridge.py',
+        'monitor.py',
+        'dashboard.py'
     ]
     
     print("📄 Essential Files:")

@@ -26,34 +26,34 @@ show_menu() {
 # Function to run dashboard
 run_dashboard() {
     echo "📊 Running Integration Dashboard..."
-    python3 amir_dashboard.py --status
+    python3 dashboard.py --status
 }
 
 # Function to run health check
 run_health_check() {
     echo "🔍 Running Quick Health Check..."
-    python3 amir_monitor.py --check
+    python3 monitor.py --check
 }
 
 # Function to start data bridge
 start_bridge() {
     echo "🌉 Starting Data Bridge in background..."
-    nohup python3 amir_data_bridge.py > bridge.log 2>&1 &
+    nohup python3 data_bridge.py > bridge.log 2>&1 &
     echo "✅ Bridge started! Check bridge.log for output"
-    echo "🛑 To stop: pkill -f amir_data_bridge.py"
+    echo "🛑 To stop: pkill -f data_bridge.py"
 }
 
 # Function to start monitoring
 start_monitoring() {
     echo "📈 Starting Continuous Monitoring..."
     echo "🛑 Press Ctrl+C to stop"
-    python3 amir_monitor.py --monitor
+    python3 monitor.py --monitor
 }
 
 # Function to test Pattern JSON
 test_pattern_json() {
     echo "🧪 Testing Pattern JSON Integration..."
-    python3 amir_dashboard.py --test
+    python3 dashboard.py --test
 }
 
 # Function to view enhancement spec

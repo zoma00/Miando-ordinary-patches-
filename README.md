@@ -46,9 +46,9 @@ shared, SSL-secured database rather than a brittle custom API:
 ```
 
 **How the data crosses platforms:** the Windows MT5 server writes OHLC bars **directly into the
-Linux PostgreSQL database over an SSL connection**. On the Linux side, `amir_data_bridge.py`
+Linux PostgreSQL database over an SSL connection**. On the Linux side, `data_bridge.py`
 continuously reads new rows, enriches them (real-time spread from the latest M1 candle, trading
-session detection), and feeds the Pattern JSON analytics. `amir_monitor.py` tracks data freshness
+session detection), and feeds the Pattern JSON analytics. `monitor.py` tracks data freshness
 (time since the last MT5 collection) so stale data never drives analysis.
 
 ## Tech stack
@@ -76,11 +76,11 @@ Orchestrated via `docker-compose.yml`:
 
 1. **Collect** — MT5 on Windows records live OHLC bars per symbol.
 2. **Cross platforms** — the Windows server writes directly to the Linux PostgreSQL DB over SSL.
-3. **Bridge** — `amir_data_bridge.py` reads new rows and adds spread + session data.
+3. **Bridge** — `data_bridge.py` reads new rows and adds spread + session data.
 4. **Analyze** — the indicator bot computes ADX, ATR, RSI, MACD, Bollinger Bands, and more.
 5. **Pattern JSON** — a 152-candle structure is built for vector matching and 1-hour max
    gain/loss prediction.
-6. **Monitor** — `amir_monitor.py` reports how fresh the MT5 data is.
+6. **Monitor** — `monitor.py` reports how fresh the MT5 data is.
 
 ## Technical indicators
 
@@ -143,9 +143,9 @@ miando-mt5-forex-integration/
 ├── Dockerfile                 PostgreSQL with SSL
 ├── schema.sql                 Database schema
 ├── generate_ssl.sh            SSL certificate generation
-├── amir_data_bridge.py        Windows MT5 → Linux data bridge (core integration)
-├── amir_monitor.py            MT5 data-freshness monitoring
-├── amir_dashboard.py          Integration status dashboard
+├── data_bridge.py             Windows MT5 → Linux data bridge (core integration)
+├── monitor.py                 MT5 data-freshness monitoring
+├── dashboard.py               Integration status dashboard
 ├── indikator_bot/             Technical-indicator engine
 ├── patterns/json_split/       Pattern JSON analytics & prediction
 ├── duka/                      Dukascopy historical-data fetcher

@@ -74,9 +74,9 @@ echo ""
 echo "📄 Essential Files Check:"
 check_file "test_amir_bridge_integration.py"
 check_file "test_json_split_pattern.py"
-check_file "amir_data_bridge.py"
-check_file "amir_monitor.py"
-check_file "amir_dashboard.py"
+check_file "data_bridge.py"
+check_file "monitor.py"
+check_file "dashboard.py"
 
 echo ""
 echo "🚀 STARTING COMPREHENSIVE TEST SUITE"
@@ -160,7 +160,7 @@ run_test "JSON Split Pattern Execution" "python3 test_json_split_pattern.py"
 # Test 7: Bridge Scripts Availability
 run_test "Bridge Scripts Availability" "python3 -c \"
 import os
-scripts = ['amir_monitor.py', 'amir_data_bridge.py', 'amir_dashboard.py']
+scripts = ['monitor.py', 'data_bridge.py', 'dashboard.py']
 found = []
 for script in scripts:
     if os.path.exists(script):
@@ -262,8 +262,8 @@ echo "📋 NEXT STEPS:"
 echo "=============================================================="
 echo "1. Review any failed tests above"
 echo "2. If all passed, your bridge integration is ready"
-echo "3. Run 'python3 amir_data_bridge.py' to start bridge"
-echo "4. Run 'python3 amir_monitor.py' for monitoring"
-echo "5. Run 'python3 amir_dashboard.py' for status dashboard"
+echo "3. Run 'python3 data_bridge.py' to start bridge"
+echo "4. Run 'python3 monitor.py' for monitoring"
+echo "5. Run 'python3 dashboard.py' for status dashboard"
 echo ""
 echo "Test completed at: $(date)"
