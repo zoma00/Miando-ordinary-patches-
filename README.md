@@ -24,26 +24,9 @@ Linux**. Miando bridges the two.
 MT5/MQL5 is Windows-only; the processing stack is Linux + Docker. Miando connects them through a
 shared, SSL-secured database rather than a brittle custom API:
 
-```
-┌──────────────────────────────┐
-│  Windows MT5 Server           │  MQL5 script collects live OHLC bars for
-│  (MetaTrader 5 / MQL5)        │  XAUUSD, EURUSD, GBPUSD, USDJPY, USDCHF
-└───────────────┬──────────────┘
-                │  direct SSL PostgreSQL connection (Windows → Linux)
-                ▼
-┌──────────────────────────────┐
-│  Linux · Docker               │  ohlc_data table enriched with
-│  PostgreSQL (SSL/TLS)         │  mt5_collection_time, data_source,
-│                               │  spread, trading_session
-└───────────────┬──────────────┘
-                │  Python data bridge — reads new rows, enriches them
-                ▼
-┌──────────────────────────────┐
-│  Analytics & Pattern JSON      │  technical indicators, real-time spread,
-│  (Python services)            │  session detection, 152-candle pattern
-│                               │  vectors, 1-hour gain/loss prediction
-└──────────────────────────────┘
-```
+<p align="center">
+  <img src="docs/mt5-data-flow.svg" width="100%" alt="Windows MT5 sends live OHLC data over an SSL PostgreSQL connection to Dockerized Linux storage, where a Python data bridge enriches records for analytics and Pattern JSON prediction.">
+</p>
 
 **How the data crosses platforms:** the Windows MT5 server writes OHLC bars **directly into the
 Linux PostgreSQL database over an SSL connection**. On the Linux side, `data_bridge.py`

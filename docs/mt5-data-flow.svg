@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" role="img" aria-labelledby="title description">
+  <title id="title">MT5 cross-platform data pipeline</title>
+  <desc id="description">A Windows MetaTrader 5 server writes live OHLC market data over an SSL PostgreSQL connection to a Dockerized Linux database. A Python data bridge enriches new rows before Python analytics services generate indicators and Pattern JSON predictions.</desc>
+
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; fill: #0f172a; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 14px; font-weight: 400; fill: #475569; }
+      .node-title { font-family: Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #ffffff; }
+      .node-copy { font-family: Arial, sans-serif; font-size: 13px; font-weight: 400; fill: #ffffff; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; font-weight: 600; fill: #334155; }
+      .arrow { fill: none; stroke: #64748b; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <rect width="720" height="900" rx="22" fill="#f8fafc"/>
+  <text x="360" y="40" text-anchor="middle" class="title">MT5 Cross-Platform Data Pipeline</text>
+  <text x="360" y="66" text-anchor="middle" class="subtitle">Windows collection · SSL ingestion · Python enrichment · analytics</text>
+
+  <g>
+    <rect x="60" y="95" width="600" height="125" rx="18" fill="#0055a4"/>
+    <text x="105" y="132" class="node-title">Windows MT5 Server</text>
+    <text x="105" y="159" class="node-copy">MetaTrader 5 / MQL5 collects live OHLC bars</text>
+    <text x="105" y="184" class="node-copy">XAUUSD · EURUSD · GBPUSD · USDJPY · USDCHF</text>
+  </g>
+
+  <path d="M 360 220 L 360 300" class="arrow"/>
+  <path d="M 352 288 L 360 302 L 368 288 Z" fill="#64748b"/>
+  <rect x="390" y="245" width="240" height="30" rx="15" fill="#e2e8f0"/>
+  <text x="510" y="265" text-anchor="middle" class="label">Direct SSL PostgreSQL connection</text>
+
+  <g>
+    <rect x="60" y="305" width="600" height="140" rx="18" fill="#4169e1"/>
+    <text x="105" y="342" class="node-title">Linux · Docker · PostgreSQL</text>
+    <text x="105" y="369" class="node-copy">SSL/TLS storage in the ohlc_data table</text>
+    <text x="105" y="394" class="node-copy">mt5_collection_time · data_source</text>
+    <text x="105" y="419" class="node-copy">spread · trading_session</text>
+  </g>
+
+  <path d="M 360 445 L 360 535" class="arrow"/>
+  <path d="M 352 523 L 360 537 L 368 523 Z" fill="#64748b"/>
+  <rect x="390" y="475" width="150" height="30" rx="15" fill="#e2e8f0"/>
+  <text x="465" y="495" text-anchor="middle" class="label">Reads new rows</text>
+
+  <g>
+    <rect x="60" y="540" width="600" height="110" rx="18" fill="#3776ab"/>
+    <text x="105" y="578" class="node-title">Python Data Bridge</text>
+    <text x="105" y="605" class="node-copy">data_bridge.py enriches spread and trading-session data</text>
+    <text x="105" y="630" class="node-copy">and passes normalized records to the analytics pipeline</text>
+  </g>
+
+  <path d="M 360 650 L 360 745" class="arrow"/>
+  <path d="M 352 733 L 360 747 L 368 733 Z" fill="#64748b"/>
+  <rect x="390" y="683" width="190" height="30" rx="15" fill="#e2e8f0"/>
+  <text x="485" y="703" text-anchor="middle" class="label">Enriched market records</text>
+
+  <g>
+    <rect x="60" y="750" width="600" height="120" rx="18" fill="#6d28d9"/>
+    <text x="105" y="788" class="node-title">Analytics &amp; Pattern JSON</text>
+    <text x="105" y="815" class="node-copy">Technical indicators · real-time spread · session detection</text>
+    <text x="105" y="840" class="node-copy">152-candle vectors · 1-hour gain/loss prediction</text>
+  </g>
+</svg>
